@@ -1,8 +1,10 @@
-version: 2
- jobs:
-   build:
-     docker:
-       - image: circleci/ruby:2.4.1
-     steps:
-       - checkout
-       - run: echo "A first hello"
+version: 2.1
+
+orbs:
+  maven: circleci/maven@0.0.12
+
+workflows:
+  maven_test:
+    jobs:
+      - maven/test # checkout, build, test, and upload test results
+
